@@ -7,13 +7,26 @@ import 'package:todo_bloc/src/features/todo/presentation/widgets/empty_state_wid
 import 'package:todo_bloc/src/features/todo/presentation/widgets/task_dialog.dart';
 import 'package:todo_bloc/src/features/todo/presentation/widgets/task_list_widget.dart';
 
-class TodoPage extends StatelessWidget {
+import 'bloc/todo_event.dart';
+
+class TodoPage extends StatefulWidget {
   const TodoPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final bloc = context.get<TodoBloc>();
+  State<TodoPage> createState() => _TodoPageState();
+}
 
+class _TodoPageState extends State<TodoPage> {
+  final bloc = Injector.get<TodoBloc>();
+
+  @override
+  void initState() {
+    super.initState();
+    bloc.dispatch(LoadTasksEvent());
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('To-Do List')),
       body: StreamBuilder<TodoState>(
