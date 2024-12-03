@@ -56,7 +56,7 @@ Antes de começar, você precisará de:
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/seu-usuario/todo-app-flutter.git
+   git clone https://github.com/seu-usuario/todo-bloc.git
    ```
 
 2. Instale as dependências:
